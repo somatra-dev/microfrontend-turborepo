@@ -3,16 +3,16 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { userApi } from './feature/user/userApi';
 
 export const makeStore = () => {
-  const store = configureStore({
-    reducer: {
-      [userApi.reducerPath]: userApi.reducer
-    },
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(userApi.middleware)
-  });
+    const store = configureStore({
+        reducer: {
+            [userApi.reducerPath]: userApi.reducer
+        },
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(userApi.middleware)
+    });
 
-  setupListeners(store.dispatch);
-  return store;
+    setupListeners(store.dispatch);
+    return store;
 };
 
 export type AppStore = ReturnType<typeof makeStore>;

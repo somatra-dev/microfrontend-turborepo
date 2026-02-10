@@ -9,6 +9,7 @@ import {
 } from '@tabler/icons-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@repo/ui/components/ui/avatar';
+import { DEFAULT_NAV_USER, useGetMeQuery } from '@repo/redux/feature/user';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -18,7 +19,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger
 } from '@repo/ui/components/ui/dropdown-menu';
-import { useGetMeQuery, DEFAULT_NAV_USER } from '@repo/redux/feature/user';
 
 export function UserCom() {
     const { data, isLoading } = useGetMeQuery();
