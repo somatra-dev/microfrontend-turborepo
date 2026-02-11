@@ -4,7 +4,6 @@ import {
     IconCircleCheck,
     IconChevronsDown,
     IconLogout,
-    IconSparkles,
     IconLogin
 } from '@tabler/icons-react';
 
@@ -19,6 +18,8 @@ import {
     DropdownMenuTrigger
 } from '@repo/ui/components/ui/dropdown-menu';
 import { useGetMeQuery, DEFAULT_NAV_USER } from '@repo/redux/feature/user';
+
+const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? 'http://localhost:3333';
 
 export function UserCom() {
     const { data, isLoading } = useGetMeQuery();
@@ -74,9 +75,11 @@ export function UserCom() {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                     {isAuthenticated && (
-                        <DropdownMenuItem>
-                            <IconCircleCheck className='mr-2 h-4 w-4' />
-                            Account
+                        <DropdownMenuItem asChild>
+                            <a href={`${rootDomain}/profile`} className='flex items-center'>
+                                <IconCircleCheck className='mr-2 h-4 w-4' />
+                                Profile
+                            </a>
                         </DropdownMenuItem>
                     )}
                 </DropdownMenuGroup>

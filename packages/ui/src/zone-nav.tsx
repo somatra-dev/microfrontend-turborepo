@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { UserCom } from './UserComponet';
+import { UserCom } from './components/user/ProfileToggleComponent';
 
 interface NavLink {
   label: string;
