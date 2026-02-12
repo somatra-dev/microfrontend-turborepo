@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useGetIphonesQuery } from "@repo/redux/feature/iphone";
+import {
+  getIphoneErrorDetails,
+  useGetIphonesQuery,
+} from "@repo/redux/feature/iphone";
 
 function formatPrice(price?: number) {
   if (price == null) return "-";
@@ -13,7 +16,7 @@ function formatPrice(price?: number) {
 }
 
 export default function IphoneZoneComponent() {
-  const { data, isLoading, isError } = useGetIphonesQuery();
+  const { data, isLoading, isError, error } = useGetIphonesQuery();
 
   if (isLoading) {
     return (
@@ -24,11 +27,25 @@ export default function IphoneZoneComponent() {
   }
 
   if (isError) {
+    const details = getIphoneErrorDetails(error);
     return (
-      <section className="rounded-2xl border border-red-200 bg-red-50 p-6">
-        <p className="text-sm text-red-700">
-          Failed to load iPhones from iphone-service.
+      <section className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-sm">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-red-700">
+          iPhone Zone Unavailable
         </p>
+        <h3 className="mt-2 text-lg font-semibold text-red-900">{details.title}</h3>
+        <p className="mt-2 text-sm text-red-800">{details.message}</p>
+        <div className="mt-3 space-y-1 text-xs text-red-700">
+          {details.status ? <p>Status: {String(details.status)}</p> : null}
+          {details.path ? <p>Endpoint: {details.path}</p> : null}
+        </div>
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="mt-4 rounded-lg bg-red-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-600"
+        >
+          Retry
+        </button>
       </section>
     );
   }
