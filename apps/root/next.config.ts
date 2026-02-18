@@ -42,64 +42,17 @@ const nextConfig: NextConfig = {
         destination: "/profile/:path+",
       },
 
-      //-------------------------------
-      // for served fallback UI
-      {
-        source: "/_zones/iphone",
-        destination: `${iphoneDomain}/iphone`,
-      },
-      {
-        source: "/_zones/iphone/:path+",
-        destination: `${iphoneDomain}/iphone/:path+`,
-      },
-
-
-      // for route zone
-      {
-        source: "/iphone/:path+",
-        destination: `${iphoneDomain}/iphone/:path+`,
-      },
+      //------------------------------
       {
         source: "/iphone-static/:path+",
         destination: `${iphoneDomain}/iphone-static/:path+`,
       },
 
-      // for served fallback UI
-      {
-        source: "/_zones/ipad",
-        destination: `${ipadDomain}/ipad`,
-      },
-      {
-        source: "/_zones/ipad/:path+",
-        destination: `${ipadDomain}/ipad/:path+`,
-      },
-
-
-      // for route zone
-      {
-        source: "/ipad/:path+",
-        destination: `${ipadDomain}/ipad/:path+`,
-      },
       {
         source: "/ipad-static/:path+",
         destination: `${ipadDomain}/ipad-static/:path+`,
       },
 
-      // for served fallback UI
-      {
-        source: "/_zones/macbook",
-        destination: `${macbookDomain}/macbook`,
-      },
-      {
-        source: "/_zones/macbook/:path+",
-        destination: `${macbookDomain}/macbook/:path+`,
-      },
-
-      // for route zone
-      {
-        source: "/macbook/:path+",
-        destination: `${macbookDomain}/macbook/:path+`,
-      },
       {
         source: "/macbook-static/:path+",
         destination: `${macbookDomain}/macbook-static/:path+`,
